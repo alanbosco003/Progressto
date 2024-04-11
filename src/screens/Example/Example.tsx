@@ -16,14 +16,14 @@ import { Brand } from '@/components/molecules';
 import { SafeScreen } from '@/components/template';
 import { useTheme } from '@/theme';
 import { fetchOne } from '@/services/users';
-
+import type { ApplicationScreenProps } from '@/types/navigation';
 import { isImageSourcePropType } from '@/types/guards/image';
 
 import SendImage from '@/theme/assets/images/send.png';
 import ColorsWatchImage from '@/theme/assets/images/colorswatch.png';
 import TranslateImage from '@/theme/assets/images/translate.png';
 
-function Example() {
+function Example({ navigation }: ApplicationScreenProps) {
 	const { t } = useTranslation(['example', 'welcome']);
 
 	const {
@@ -156,6 +156,9 @@ function Example() {
 								style={{ tintColor: colors.purple500 }}
 							/>
 						</TouchableOpacity>
+						<TouchableOpacity onPress={() => navigation.navigate('Home')}>
+        <Text>Go to Home</Text>
+      </TouchableOpacity>
 					</View>
 				</View>
 			</ScrollView>

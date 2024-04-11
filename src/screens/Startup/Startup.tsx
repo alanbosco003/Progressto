@@ -49,6 +49,6 @@ function Startup({ navigation }: ApplicationScreenProps) {
 			</View>
 		</SafeScreen>
 	);
-}
+};
 
 export default Startup;
