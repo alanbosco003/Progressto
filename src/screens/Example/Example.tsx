@@ -110,6 +110,10 @@ function Example({ navigation }: ApplicationScreenProps) {
 						</Text>
 					</View>
 
+					<TouchableOpacity onPress={() => navigation.navigate('Home')}>
+        <Text>Go to Home</Text>
+      </TouchableOpacity>
+
 					<View
 						style={[
 							layout.row,
@@ -156,9 +160,7 @@ function Example({ navigation }: ApplicationScreenProps) {
 								style={{ tintColor: colors.purple500 }}
 							/>
 						</TouchableOpacity>
-						<TouchableOpacity onPress={() => navigation.navigate('Home')}>
-        <Text>Go to Home</Text>
-      </TouchableOpacity>
+
 					</View>
 				</View>
 			</ScrollView>
