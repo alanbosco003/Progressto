@@ -10,7 +10,6 @@ import {
 import i18next from 'i18next';
 import { useTranslation } from 'react-i18next';
 import { useQuery } from '@tanstack/react-query';
-
 import { ImageVariant } from '@/components/atoms';
 import { Brand } from '@/components/molecules';
 import { SafeScreen } from '@/components/template';
@@ -18,7 +17,7 @@ import { useTheme } from '@/theme';
 import { fetchOne } from '@/services/users';
 import type { ApplicationScreenProps } from '@/types/navigation';
 import { isImageSourcePropType } from '@/types/guards/image';
-
+import Icon from 'react-native-vector-icons/FontAwesome';
 import SendImage from '@/theme/assets/images/send.png';
 import ColorsWatchImage from '@/theme/assets/images/colorswatch.png';
 import TranslateImage from '@/theme/assets/images/translate.png';
@@ -82,11 +81,15 @@ function Example({ navigation }: ApplicationScreenProps) {
 					<View
 						style={[layout.relative, backgrounds.gray100, components.circle250]}
 					/>
+					
 
 					<View style={[layout.absolute, gutters.paddingTop_80]}>
 						<Brand height={300} width={300} />
 					</View>
 				</View>
+				<View>
+              <Icon name="rocket" size={30} color="#900" />
+            </View>
 
 				<View style={[gutters.paddingHorizontal_32, gutters.marginTop_40]}>
 					<View style={[gutters.marginTop_40]}>
