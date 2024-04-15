@@ -5,7 +5,7 @@ import { View, Text } from 'react-native';
 function AnalyticsScreen() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Analytics</Text>
+      <Text style={{ fontSize: 18 }}>Analytics</Text>
     </View>
   );
 }

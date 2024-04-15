@@ -4,8 +4,8 @@ import { View, Text } from 'react-native';
 
 function GoalsScreen() {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Goals</Text>
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', }}>
+      <Text style={{ fontSize: 18 }}>Goals</Text>
     </View>
   );
 }

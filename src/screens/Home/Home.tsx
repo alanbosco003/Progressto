@@ -5,40 +5,52 @@ import TodoScreen from '../Todo/TodoScreen';
 import MoneyScreen from '../Money/MoneyScreen';
 import CareerScreen from '../Goals/GoalsScreen';
 import AnalyticsScreen from '../Analytics/AnalyticsScreen';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import { View } from 'react-native/Libraries/Components/View/View';
+import IconFeather from 'react-native-vector-icons/Feather';
+import { Text } from 'react-native';
+
 
 const Tab = createBottomTabNavigator();
-const myIcon = <Icon name="rocket" size={30} color="#900" />;
+
+const toDoIcon = <IconFeather name="list" size={24} color="#000000" />;
+const moneyIcon = <IconFeather name="minimize-2" size={24} color="#000000" />;
+const careerIcon = <IconFeather name="target" size={24} color="#000000" />;
+const analyticsIcon = <IconFeather name="activity" size={24} color="#000000" />;
+const toDoIconInactive = <IconFeather name="list" size={24} color="#808080" />;
+const moneyIconInactive = <IconFeather name="minimize-2" size={24} color="#808080" />;
+const careerIconInactive = <IconFeather name="target" size={24} color="#808080" />;
+const analyticsIconInactive = <IconFeather name="activity" size={24} color="#808080" />;
 function MainTabNavigator() {
-    const iconName: string = 'ios-list'; 
   return (
     <Tab.Navigator
       initialRouteName="To Do"
       screenOptions={({ route }) => ({
-        tabBarIcon: ({ focused, color, size }) => {
-          let iconName;
-
-          if (route.name === 'To Do') {
-            iconName = focused ? 'ios-list-box' : 'ios-list';
-          } else if (route.name === 'Money') {
-            iconName = focused ? 'ios-cash' : 'ios-cash-outline';
-          } else if (route.name === 'Career') {
-            iconName = focused ? 'ios-briefcase' : 'ios-briefcase-outline';
-          } else if (route.name === 'Analytics') {
-            iconName = focused ? 'ios-analytics' : 'ios-analytics-outline';
-          }
-
-          // You can return any component that you like here!
-          return <Icon name="rocket" size={30} color="#900" />
-        //    <Icon ios="ios-add" android="md-add" />
-        //   <Ionicons name={iconName} size={size} color={color} />;
-        },
+        tabBarIcon: ({ focused }) => {
+            if (route.name === 'To Do') {
+              return focused ? toDoIcon : toDoIconInactive;
+            } else if (route.name === 'Money') {
+              return focused ? moneyIcon : moneyIconInactive;
+            } else if (route.name === 'Career') {
+              return focused ?careerIcon : careerIconInactive;
+            } else if (route.name === 'Analytics') {
+              return focused ? analyticsIcon :analyticsIconInactive;
+            }
+            return careerIcon;
+          },
+          tabBarLabel: ({ focused }) => {
+            let labelColor = focused ? '#000000' : '#808080';
+            return (
+              <Text style={{ color: labelColor }}>
+                {/* Provide label for each tab screen */}
+                {route.name === 'To Do' ? 'To Do' :
+                 route.name === 'Money' ? 'Money' :
+                 route.name === 'Career' ? 'Career' :
+                 route.name === 'Analytics' ? 'Analytics' :
+                 ''}
+              </Text>
+            );
+          },
       })}
-    //   tabBarOptions={{
-    //     activeTintColor: 'blue',
-    //     inactiveTintColor: 'gray',
-    //   }}
+
     >
       <Tab.Screen name="To Do" component={TodoScreen} />
       <Tab.Screen name="Money" component={MoneyScreen} />

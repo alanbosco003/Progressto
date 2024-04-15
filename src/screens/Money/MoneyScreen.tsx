@@ -5,7 +5,7 @@ import { View, Text } from 'react-native';
 function MoneyScreen() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Money</Text>
+      <Text style={{ fontSize: 18 }}>Money</Text>
     </View>
   );
 }
