@@ -5,46 +5,42 @@ import TodoScreen from '../Todo/TodoScreen';
 import MoneyScreen from '../Money/MoneyScreen';
 import CareerScreen from '../Goals/GoalsScreen';
 import AnalyticsScreen from '../Analytics/AnalyticsScreen';
-import IconFeather from 'react-native-vector-icons/Feather';
 import { Text } from 'react-native';
+import FeatherIcons from '@/components/atoms/Icons/FeatherIcons';
+import { useTranslation } from 'react-i18next';
 
 
 const Tab = createBottomTabNavigator();
-
-const toDoIcon = <IconFeather name="list" size={24} color="#000000" />;
-const moneyIcon = <IconFeather name="minimize-2" size={24} color="#000000" />;
-const careerIcon = <IconFeather name="target" size={24} color="#000000" />;
-const analyticsIcon = <IconFeather name="activity" size={24} color="#000000" />;
-const toDoIconInactive = <IconFeather name="list" size={24} color="#808080" />;
-const moneyIconInactive = <IconFeather name="minimize-2" size={24} color="#808080" />;
-const careerIconInactive = <IconFeather name="target" size={24} color="#808080" />;
-const analyticsIconInactive = <IconFeather name="activity" size={24} color="#808080" />;
 function MainTabNavigator() {
+
+  const { t } = useTranslation(['homeScreen']);
+  
   return (
     <Tab.Navigator
       initialRouteName="To Do"
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused }) => {
+            let iconName;
             if (route.name === 'To Do') {
-              return focused ? toDoIcon : toDoIconInactive;
+              iconName = focused ? 'list' : 'list';
             } else if (route.name === 'Money') {
-              return focused ? moneyIcon : moneyIconInactive;
+              iconName = focused ? 'minimize-2' : 'minimize-2';
             } else if (route.name === 'Career') {
-              return focused ?careerIcon : careerIconInactive;
+              iconName = focused ? 'target' : 'target';
             } else if (route.name === 'Analytics') {
-              return focused ? analyticsIcon :analyticsIconInactive;
+              iconName = focused ? 'activity' : 'activity';
             }
-            return careerIcon;
+            return <FeatherIcons name={iconName} size={24} color={focused ? '#000000' : '#808080'} />;
           },
           tabBarLabel: ({ focused }) => {
             let labelColor = focused ? '#000000' : '#808080';
             return (
               <Text style={{ color: labelColor }}>
-                {/* Provide label for each tab screen */}
-                {route.name === 'To Do' ? 'To Do' :
-                 route.name === 'Money' ? 'Money' :
-                 route.name === 'Career' ? 'Career' :
-                 route.name === 'Analytics' ? 'Analytics' :
+                    {/* Provide label for each tab screen */}
+                 {route.name === 'To Do' ? t('homeScreen:To-Do') :
+                 route.name === 'Money' ? t('homeScreen:Money') :
+                 route.name === 'Career' ? t('homeScreen:Career') :
+                 route.name === 'Analytics' ? t('homeScreen:Analytics') :
                  ''}
               </Text>
             );
