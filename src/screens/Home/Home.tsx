@@ -14,7 +14,6 @@ const Tab = createBottomTabNavigator();
 function MainTabNavigator() {
 
   const { t } = useTranslation(['homeScreen']);
-  
   return (
     <Tab.Navigator
       initialRouteName="To Do"
