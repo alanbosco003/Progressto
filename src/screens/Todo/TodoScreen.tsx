@@ -12,7 +12,7 @@ function TodoScreen() {
     ];
     const month = monthNames[currentDate.getMonth()];
     const year = currentDate.getFullYear();
-    return `${month} ${year}`;
+    return `${month} ${year}`;  
   };
 
     // Function to generate an array of dates for the current month
