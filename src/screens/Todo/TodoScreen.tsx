@@ -16,7 +16,9 @@ function TodoScreen() {
   };
 
     // Function to generate an array of dates for the current month
-    const generateDates = () => {
+    const generateDates = () => { 
+
+      
       const currentDate = new Date();
       const numberOfDays = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate();
       const dates = [];
