@@ -2,7 +2,40 @@ import FeatherIcons from '@/components/atoms/Icons/FeatherIcons';
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
 
+import { FAB, Portal, Modal, TextInput, Button } from 'react-native-paper';
+
+
+
 function TodoScreen() {
+
+  const [visible, setVisible] = useState(false);
+const [taskName, setTaskName] = useState('');
+const [taskTime, setTaskTime] = useState('');
+const [taskDescription, setTaskDescription] = useState('');
+
+const showModal = () => {
+  setVisible(true);
+  console.log('Visible is now true:', visible); // Log the new value of visible
+};
+
+const hideModal = () => setVisible(false);
+const handleTaskNameChange = (text: string) => setTaskName(text);
+const handleTaskTimeChange = (text: string) => setTaskTime(text);
+const handleTaskDescriptionChange = (text: string) => setTaskDescription(text);
+
+const submitTask = () => {
+  // Add logic to handle task submission
+  // For example, you can console.log the task details for now
+  console.log('Task Name:', taskName);
+  console.log('Task Time:', taskTime);
+  console.log('Task Description:', taskDescription);
+
+  // Reset input values and hide the modal
+  setTaskName('');
+  setTaskTime('');
+  setTaskDescription('');
+  hideModal();
+};
   // Function to get the current month and year
   const getCurrentMonthYear = () => {
     const currentDate = new Date();
@@ -47,7 +80,6 @@ const getDayOfWeek = (day: number | undefined) => {
   const dayOfWeek = date.toLocaleDateString('en-US', { weekday: 'short' });
   return dayOfWeek;
 };
-  let iconName = "list";
   return (
     <View style={{ flex: 1 }}>
       <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', padding: 10 }}>
@@ -85,11 +117,43 @@ const getDayOfWeek = (day: number | undefined) => {
           <Text>{selectedDate}, {getCurrentMonthYear()}</Text>
         </View>
       )}
+        <FAB
+    style={{ position: 'absolute', margin: 16, right: 0, bottom: 0 }}
+    icon="plus"
+    onPress={showModal}
+  />
+
+<Portal>
+  <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={{ backgroundColor: 'white', padding: 20 }}>
+    <TextInput
+      label="Task Name"
+      value={taskName}
+      onChangeText={handleTaskNameChange}
+    />
+    <TextInput
+      label="Task Time"
+      value={taskTime}
+      onChangeText={handleTaskTimeChange}
+    />
+    <TextInput
+      label="Task Description"
+      value={taskDescription}
+      onChangeText={handleTaskDescriptionChange}
+    />
+    <Button mode="contained" onPress={() => {
+      // Add functionality to submit the task here
+      // You can access taskName, taskTime, and taskDescription here
+      // Example: onSubmitTask(taskName, taskTime, taskDescription);
+      // Remember to reset input values and hide the modal after submitting
+      hideModal();
+      }}>
+      Submit
+    </Button>
+  </Modal>
+</Portal>
 
       {/* Your remaining UI */}
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text style={{ fontSize: 18 }}>Todo Screen</Text>
-      </View>
+
     </View>
   );
 
