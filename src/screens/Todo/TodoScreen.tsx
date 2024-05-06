@@ -4,6 +4,7 @@ import React from 'react';
 import { View, Text, TouchableOpacity, ScrollView, FlatList } from 'react-native';
 import { FAB, Portal, Modal, TextInput, Button } from 'react-native-paper';
 import { useCaseTodoScreen } from '../Todo/UseCase/TodoUseCase';
+import AddToDo from '@/components/molecules/AddToDo/AddToDo';
 
 function TodoScreen() {
   const {
@@ -14,6 +15,8 @@ function TodoScreen() {
     tasks,
     selectedDate,
     isDatePickerVisible,
+    isAddToDoVisible,
+    setIsAddToDoVisible,
     handleDateSelect,
     getDayOfWeek,
     showDatePicker,
@@ -27,6 +30,7 @@ function TodoScreen() {
     handleTaskDescriptionChange,
     submitTask,
     getCurrentMonthYear,
+    handleAddToDoSubmit,
   } = useCaseTodoScreen();
 
   const renderItem = ({ item }: { item: { name: string; time: string; description: string; } }) => (
@@ -36,6 +40,7 @@ function TodoScreen() {
       <Text>Description: {item.description}</Text>
     </View>
   );
+
 
   return (
     <View style={{ flex: 1 }}>
@@ -75,11 +80,16 @@ function TodoScreen() {
       <FAB
         style={{ position: 'absolute', margin: 16, right: 0, bottom: 0 }}
         icon="plus"
-        onPress={showModal}
+        onPress={() => setIsAddToDoVisible(true)}
       />
       <ProDatePickerModal isVisible={isDatePickerVisible} handleConfirm={handleConfirm} hideDatePicker={hideDatePicker} onCancel={hideDatePicker} onConfirm={function (date: Date): void {
         throw new Error('Function not implemented.');
       } } />
+            <AddToDo
+        isVisible={isAddToDoVisible}
+        onClose={() => setIsAddToDoVisible(false)}
+        onSubmit={handleAddToDoSubmit}
+      />
       <Portal>
         <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={{ backgroundColor: 'white', padding: 20 }}>
           <TextInput

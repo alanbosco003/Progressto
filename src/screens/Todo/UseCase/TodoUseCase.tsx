@@ -72,6 +72,18 @@ export const useCaseTodoScreen = () => {
     return `${month} ${year}`;  
   };
 
+  const [isAddToDoVisible, setIsAddToDoVisible] = useState(false);
+  const [toDoData, setToDoData] = useState<ToDoData | null>(null);
+
+  const handleAddToDoSubmit = (data: ToDoData) => {
+    setToDoData(data);
+  };
+
+  interface ToDoData {
+    name: string;
+    password: string;
+  }
+
   return {
     visible,
     taskName,
@@ -80,6 +92,7 @@ export const useCaseTodoScreen = () => {
     tasks,
     selectedDate,
     isDatePickerVisible,
+    isAddToDoVisible,
     handleDateSelect,
     getDayOfWeek,
     showDatePicker,
@@ -93,5 +106,7 @@ export const useCaseTodoScreen = () => {
     handleTaskDescriptionChange,
     submitTask,
     getCurrentMonthYear,
+    setIsAddToDoVisible,
+    handleAddToDoSubmit
   };
 };
