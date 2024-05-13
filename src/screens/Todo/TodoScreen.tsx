@@ -8,29 +8,8 @@ import AddToDo from '@/components/molecules/AddToDo/AddToDo';
 
 function TodoScreen() {
   const {
-    visible,
-    taskName,
-    taskTime,
-    taskDescription,
-    tasks,
-    selectedDate,
-    isDatePickerVisible,
-    isAddToDoVisible,
-    setIsAddToDoVisible,
-    handleDateSelect,
-    getDayOfWeek,
-    showDatePicker,
-    generateDates,
-    hideDatePicker,
-    handleConfirm,
-    showModal,
-    hideModal,
-    handleTaskNameChange,
-    handleTaskTimeChange,
-    handleTaskDescriptionChange,
-    submitTask,
-    getCurrentMonthYear,
-    handleAddToDoSubmit,
+    visible, taskName, taskTime, taskDescription, tasks, selectedDate, isDatePickerVisible, isAddToDoVisible, 
+    setIsAddToDoVisible, handleDateSelect, getDayOfWeek, showDatePicker, generateDates, hideDatePicker, handleConfirm, showModal, hideModal, handleTaskNameChange, handleTaskTimeChange, handleTaskDescriptionChange, submitTask, getCurrentMonthYear, handleAddToDoSubmit,
   } = useCaseTodoScreen();
 
   const renderItem = ({ item }: { item: { name: string; time: string; description: string; } }) => (
