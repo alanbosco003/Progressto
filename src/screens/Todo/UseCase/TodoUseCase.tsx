@@ -100,7 +100,7 @@ export const useCaseTodoScreen = () => {
     hideDatePicker,
     handleConfirm,
     showModal,
-    hideModal,
+    hideModal, 
     handleTaskNameChange,
     handleTaskTimeChange,
     handleTaskDescriptionChange,
