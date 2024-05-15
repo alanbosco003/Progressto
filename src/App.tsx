@@ -9,7 +9,7 @@ import ApplicationNavigator from './navigators/Application';
 import './translations';
 
 const queryClient = new QueryClient();
-
+ 
 export const storage = new MMKV();
 
 function App() {
